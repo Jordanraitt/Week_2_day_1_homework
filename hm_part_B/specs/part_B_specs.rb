@@ -17,6 +17,11 @@ def test_players
 end
 
 
+def test_coach_name
+  team = Team.new("Aberdeen FC", @players_list, "Derek McInnes")
+  assert_equal("Derek McInnes", team.coach_name)
+end
+
 
 
 
