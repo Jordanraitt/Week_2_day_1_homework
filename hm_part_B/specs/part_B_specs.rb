@@ -4,26 +4,30 @@ require_relative('../part_B')
 
 
 class TestClass < MiniTest::Test
-@players_list = ["Joe Lewis", "Shay Logan", "Graeme Shinnie"]
+
+  def setup()
+    @players_list = ["Joe Lewis", "Shay Logan", "Graeme Shinnie"]
+    @team = Team.new("Aberdeen FC", @players_list, "Derek McInnes")
+  end
 
 def test_team_name
-  team = Team.new("Aberdeen FC", @players_list, "Derek McInnes")
-  assert_equal("Aberdeen FC", team.team_name)
+  assert_equal("Aberdeen FC", @team.team_name)
 end
 
 def test_players
-  team = Team.new("Aberdeen FC", @players_list, "Derek McInnes")
-  assert_equal(@players, team.players)
+  assert_equal(@players_list, @team.players)
 end
 
 
 def test_coach_name
-  team = Team.new("Aberdeen FC", @players_list, "Derek McInnes")
-  assert_equal("Derek McInnes", team.coach_name)
+  assert_equal("Derek McInnes", @team.coach_name)
 end
 
-
-
+def test_add_players
+  @team.add_players("Andrew Considine")
+  players_updated = ["Joe Lewis", "Shay Logan", "Graeme Shinnie", "Andrew Considine"]
+  assert_equal(players_updated, @team.players)
+end
 
 
 end

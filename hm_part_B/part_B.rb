@@ -9,4 +9,11 @@ def initialize(team_name, players, coach_name)
 end
 
 
+  def add_players(player)
+    @players.push(player)
+  end
+
+
+
+
 end
